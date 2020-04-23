@@ -104,6 +104,9 @@ function saveOptions() {
 	let townTuneVolume   = document.getElementById('townTuneVolume').value;
 	let zipCode = document.getElementById('zip-code').value;
 	let countryCode = document.getElementById('country-code').value;
+	let city = document.getElementById('city').value;
+	let apiOpenweathermap = document.getElementById('api-openweathermap').value;
+	let weatherProvider = document.getElementById('weather-provider').value;
 	let enableBadgeText = document.getElementById('enable-badge').checked;
 	let enableBackground = document.getElementById('enable-background').checked;
 	let tabAudioReduceValue = document.getElementById('tab-audio-reduce-value').value;
@@ -165,6 +168,9 @@ function saveOptions() {
 		townTuneVolume,
 		zipCode,
 		countryCode,
+		city,
+		weatherProvider,
+		apiOpenweathermap,
 		enableBadgeText,
 		enableBackground,
 		tabAudio,
@@ -186,6 +192,9 @@ function restoreOptions() {
 		townTuneVolume: 0.75,
 		zipCode: "98052",
 		countryCode: "us",
+		city: "washington",
+		weatherProvider: "acmusicext",
+		apiOpenweathermap: "",
 		enableBadgeText: true,
 		tabAudio: 'pause',
 		enableBackground: false,
@@ -206,6 +215,9 @@ function restoreOptions() {
 		document.getElementById('townTuneVolumeText').innerHTML = `${formatPercentage(items.townTuneVolume*100)}`;
 		document.getElementById('zip-code').value = items.zipCode;
 		document.getElementById('country-code').value = items.countryCode;
+		document.getElementById('city').value = items.city;
+		document.getElementById('weather-provider').value = items.weatherProvider;
+		document.getElementById('api-openweathermap').value = items.apiOpenweathermap;
 		document.getElementById('enable-badge').checked = items.enableBadgeText;
 		document.getElementById('enable-background').checked = items.enableBackground;
 		document.getElementById('tab-audio-' + items.tabAudio).checked = true;

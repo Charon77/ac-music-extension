@@ -182,6 +182,15 @@
 						<p>Select the location to fetch the live weather information from. The live weather synchronizes with the extension's music.<br />The first box is your <a href="https://worldpostalcode.com/" target="_blank">zip/post code</a>, the second is your <a href="https://countrycode.org/" target="_blank">ISO code (the two letters)</a></p> <div class="text">
 							<input type="text" id="zip-code" aria-label="Zip/Post Code" value="98052" placeholder="Zip/Post Code">
 							<input type="text" id="country-code" aria-label="ISO Code" value="US" placeholder="ISO Code">
+							<input type="text" id="city" aria-label="City" value="washington" placeholder="ISO Code">
+
+							<input type="text" id="api-openweathermap" aria-label="Open Weather Map API Key" value="" placeholder="API Keys">
+
+							<select id="weather-provider">
+							  <option value="acmusicext">AC Music Ext</option>
+							  <option value="openweathermap">Open Weather Map</option>
+							</select>
+
 							<button type="button" id="update-location">Update Location</button>
 							<p id="weather-response"></p>
 						</div>

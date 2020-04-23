@@ -36,7 +36,12 @@ function StateManager() {
 			if (!badgeManager) badgeManager = new BadgeManager(this.registerCallback, options.enableBadgeText);
 
 			if (!weatherManager) {
-				weatherManager = new WeatherManager(options.zipCode, options.countryCode);
+				weatherManager = new WeatherManager();
+				weatherManager.setZip(options.zipCode);
+				weatherManager.setCountry(options.countryCode);
+				weatherManager.setCity(options.city);
+				weatherManager.setProvider(options.weatherProvider);
+				weatherManager.setAPIKey('openweathermap',options.apiOpenweathermap);
 				weatherManager.registerChangeCallback(() => {
 					if (!isKK() && isLive()) {
 						let musicAndWeather = getMusicAndWeather();
@@ -100,6 +105,9 @@ function StateManager() {
 			//enableAutoPause: false,
 			zipCode: "98052",
 			countryCode: "us",
+			city: 'washington',
+			weatherProvider: 'acmusicext',
+			apiOpenweathermap: '',
 			enableBadgeText: true,
 			tabAudio: 'pause',
 			enableBackground: false,
@@ -179,6 +187,9 @@ function StateManager() {
 			// Detect changes and notify corresponding listeners
 			if ('zipCode' in changes) weatherManager.setZip(changes.zipCode.newValue);
 			if ('countryCode' in changes) weatherManager.setCountry(changes.countryCode.newValue);
+			if ('city' in changes) weatherManager.setCity(changes.city.newValue);
+			if ('apiOpenweathermap' in changes) weatherManager.setAPIKey('openweathermap', changes.apiOpenweathermap.newValue);
+			if ('weatherProvider' in changes) weatherManager.setProvider(changes.weatherProvider.newValue);
 			if ('volume' in changes) notifyListeners("volume", [changes.volume.newValue]);
 			if (('music' in changes || 'weather' in changes) && !isKK()) {
 				let musicAndWeather = getMusicAndWeather();
